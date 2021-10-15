@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 8c2395c521a15054c9026e4de866db44
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - cargo: {fileID: 2911181632536083384, guid: 19586a1091628614892c6cb3a990e21a, type: 3}
+  - pirate: {fileID: 8655978891754910316, guid: 1cb6c06eae87f794c9297b504fea18e1, type: 3}
+  - captured: {instanceID: 0}
+  - patrol: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

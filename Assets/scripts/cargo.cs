@@ -16,7 +16,6 @@ public class cargo : MonoBehaviour {
 
     private void move() {
         // move 1 grid
-        //transform.position = new Vector3(transform.position.x + 5.0f, transform.position.y, transform.position.z);
         float step = speed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, movePoint.position, step);
 
@@ -29,7 +28,6 @@ public class cargo : MonoBehaviour {
 
     private void OnDrawGizmos()
     {
-   
         Gizmos.color = Color.blue;
         Gizmos.DrawSphere(movePoint.position, .2f);
 
@@ -37,6 +35,32 @@ public class cargo : MonoBehaviour {
         for (int i = 0; i < interactionPoints.Count; i++)
         {
             Gizmos.DrawSphere(interactionPoints[i].position, .2f);
+        }
+    }
+
+    /* this method should be called each timestep. It shall check if any
+    * Pirate ships are overlapping with the evade sensors and move the
+    * Cargo 1 grid northeast if so.
+    */
+    private void evadeAction() {
+        // get all Pirates
+        GameObject[] pirates = GameObject.FindGameObjectsWithTag("pirate");
+
+        // looping thru evade sensors
+        foreach (Transform sensor in this.gameObject.transform) {
+
+            if (sensor.tag == "evadeSensor") {
+
+                // loop over Pirates
+                foreach (GameObject p in pirates) {
+
+                    // check if Pirate is at the sensor
+                    if (Vector3.Distance(sensor.position, p.transform.position) <= 0.5) {
+                        // then Cargo should evade
+
+                    }
+                }
+            }
         }
     }
 }

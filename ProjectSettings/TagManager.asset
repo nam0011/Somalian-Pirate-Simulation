@@ -7,6 +7,7 @@ TagManager:
   - cargo
   - pirate
   - patrol
+  - evadeSensor
   layers:
   - Default
   - TransparentFX

@@ -197,6 +197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movePoint: {fileID: 8568056091933338801}
+  evadeTarget: {fileID: 7076561153053142710}
   interactionPoints:
   - {fileID: 900334622856317985}
   - {fileID: 1453552299142445405}
@@ -205,6 +206,8 @@ MonoBehaviour:
   - {fileID: 561717113271555440}
   - {fileID: 7048344456263104422}
   - {fileID: 5908799242659637567}
+  - {fileID: 2644730726594802685}
+  - {fileID: 1186657612793116013}
 --- !u!1 &4383888155366046284
 GameObject:
   m_ObjectHideFlags: 0

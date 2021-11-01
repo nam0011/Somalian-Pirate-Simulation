@@ -5,6 +5,7 @@ using UnityEngine;
 public class cargo : MonoBehaviour {
 
     public Transform movePoint;
+    public Transform evadeTarget;
     public List<Transform> interactionPoints;
 
     private Vector3 origPos;
@@ -12,6 +13,7 @@ public class cargo : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         InvokeRepeating("move", 1.0f, 1.0f);
+        InvokeRepeating("evadeAction", 1.01f, 1.01f);
     }
 
     private void move() {
@@ -45,19 +47,16 @@ public class cargo : MonoBehaviour {
     private void evadeAction() {
         // get all Pirates
         GameObject[] pirates = GameObject.FindGameObjectsWithTag("pirate");
-
         // looping thru evade sensors
-        foreach (Transform sensor in this.gameObject.transform) {
-
+        foreach (Transform sensor in interactionPoints) {
             if (sensor.tag == "evadeSensor") {
-
                 // loop over Pirates
                 foreach (GameObject p in pirates) {
-
                     // check if Pirate is at the sensor
-                    if (Vector3.Distance(sensor.position, p.transform.position) <= 0.5) {
+                    if (Vector2.Distance(sensor.position, p.transform.position) <= 12.0) {
                         // then Cargo should evade
-
+                        transform.position = Vector3.MoveTowards(transform.position, evadeTarget.position, speed * Time.deltaTime);
+                        shipScript.evadesNotCapture += 1; // needs to be decremented if captured
                     }
                 }
             }

@@ -46,6 +46,11 @@ public class shipScript : MonoBehaviour
 
     Text timeStepCounterLabel;
 
+
+    private int cargoSpawnProbability = 50;
+    private int patrolSpawnProbability = 25;
+    private int pirateSpawnProbability = 40;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -95,6 +100,47 @@ public class shipScript : MonoBehaviour
         InvokeRepeating("spawnShip", 0.0f, 1.0f);
         InvokeRepeating("updateCounters", 0.0f, 1.0f);
     }
+    void Update()
+    {
+        if (Input.GetKeyDown("" + 1))
+        {
+            cargoSpawnProbability = 50;
+        }
+        else if (Input.GetKeyDown("" + 2))
+        {
+            cargoSpawnProbability = 75;
+        }
+        else if (Input.GetKeyDown("" + 3))
+        {
+            cargoSpawnProbability = 90;
+        }
+
+        if (Input.GetKeyDown("" + 4))
+        {
+            patrolSpawnProbability = 25;
+        }
+        else if (Input.GetKeyDown("" + 5))
+        {
+            patrolSpawnProbability = 50;
+        }
+        else if (Input.GetKeyDown("" + 6))
+        {
+            patrolSpawnProbability = 70;
+        }
+
+        if (Input.GetKeyDown("" + 7))
+        {
+            pirateSpawnProbability = 40;
+        }
+        else if (Input.GetKeyDown("" + 8))
+        {
+            pirateSpawnProbability = 60;
+        }
+        else if (Input.GetKeyDown("" + 9))
+        {
+            pirateSpawnProbability = 80;
+        }
+    }
 
     private void updateCounters()
     {
@@ -111,14 +157,14 @@ public class shipScript : MonoBehaviour
         pirateEnteredCounterLabel.text = "Pirates Entered: " + piratesEnter.ToString();
         patrolEnteredCounterLabel.text = "Patrols Entered: " + patrolsEnter.ToString();
 
-       
+
         timeStepCounterLabel.text = "Time Step: " + timeStepCounter++.ToString();
     }
 
     private void spawnShip()
     {
         // Roll to spawn cargo ship. Probability of 0.5
-        if (Random.Range(1, 3) == 1)
+        if (Random.Range(0, 100) <= cargoSpawnProbability)
         {
             cargoSpawnLocation = Random.Range(0, 100);
             Instantiate(cargo, cargoSpawn[cargoSpawnLocation].position, Quaternion.identity);
@@ -127,7 +173,7 @@ public class shipScript : MonoBehaviour
         }
 
         // Roll to spawn pirate ship. Probability of 0.4
-        if (Random.Range(1, 11) <= 4)
+        if (Random.Range(0, 100) <= pirateSpawnProbability)
         {
             pirateSpawnLocation = Random.Range(0, 400);
             Instantiate(pirate, pirateSpawn[pirateSpawnLocation].position, Quaternion.identity);
@@ -136,7 +182,7 @@ public class shipScript : MonoBehaviour
         }
 
         //Roll to spawn patrol ship. Probability of .25
-        if (Random.Range(0, 100) <= 25)
+        if (Random.Range(0, 100) <= patrolSpawnProbability)
         {
             patrolSpawnLocation = Random.Range(0, 100);
             Instantiate(patrol, patrolSpawn[patrolSpawnLocation].position, Quaternion.identity);

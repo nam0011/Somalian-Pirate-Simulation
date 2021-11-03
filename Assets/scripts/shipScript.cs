@@ -26,6 +26,7 @@ public class shipScript : MonoBehaviour
     public static int piratesDefeat;
     public static int evadesNotCapture;
     public static int evadesCapture;
+    public static int timeStepCounter;
 
     private int cargoSpawnLocation;
     private int pirateSpawnLocation;
@@ -43,6 +44,8 @@ public class shipScript : MonoBehaviour
     Text pirateEnteredCounterLabel;
     Text patrolEnteredCounterLabel;
 
+    Text timeStepCounterLabel;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -57,6 +60,7 @@ public class shipScript : MonoBehaviour
         piratesDefeat = 0;
         evadesNotCapture = 0;
         evadesCapture = 0;
+        timeStepCounter = 0;
 
         //find the UI elements
         cargoCounterLabel = GameObject.Find("CargoCounter").GetComponent<Text>();
@@ -71,6 +75,8 @@ public class shipScript : MonoBehaviour
         pirateEnteredCounterLabel = GameObject.Find("PirateCounter_Entered").GetComponent<Text>();
         patrolEnteredCounterLabel = GameObject.Find("PatrolCounter_Entered").GetComponent<Text>();
 
+        timeStepCounterLabel = GameObject.Find("TimeStepCounter").GetComponent<Text>();
+
         // initialize the UI elements
         cargoCounterLabel.text = "Cargos Current: " + GameObject.FindGameObjectsWithTag("cargo").Length.ToString();
         pirateCounterLabel.text = "Pirates Current: " + GameObject.FindGameObjectsWithTag("pirate").Length.ToString();
@@ -83,6 +89,8 @@ public class shipScript : MonoBehaviour
         cargoEnteredCounterLabel.text = "Cargos Entered: " + cargosEnter.ToString();
         pirateEnteredCounterLabel.text = "Pirates Entered: " + piratesEnter.ToString();
         patrolEnteredCounterLabel.text = "Patrols Entered: " + patrolsEnter.ToString();
+
+        timeStepCounterLabel.text = "Time Step: " + timeStepCounter.ToString();
 
         InvokeRepeating("spawnShip", 0.0f, 1.0f);
         InvokeRepeating("updateCounters", 0.0f, 1.0f);
@@ -103,13 +111,12 @@ public class shipScript : MonoBehaviour
         pirateEnteredCounterLabel.text = "Pirates Entered: " + piratesEnter.ToString();
         patrolEnteredCounterLabel.text = "Patrols Entered: " + patrolsEnter.ToString();
 
+       
+        timeStepCounterLabel.text = "Time Step: " + timeStepCounter++.ToString();
     }
 
     private void spawnShip()
     {
-
-
-
         // Roll to spawn cargo ship. Probability of 0.5
         if (Random.Range(1, 3) == 1)
         {
@@ -138,6 +145,14 @@ public class shipScript : MonoBehaviour
         }
     }
 
+    public int getTimeStep()
+    {
+        return timeStepCounter;
+    }
 
+    public void incrementTimeStep()
+    {
+        timeStepCounter++;
+    }
 
 }

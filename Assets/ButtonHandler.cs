@@ -2,23 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ButtonHandler : MonoBehaviour
 {
-    float lastSpeed = 1.0f;
+    public float timeStepSpeed = 0;
+
     public void setSpeed(float speed)
     {
-        if (Time.timeScale != 0.0)
-        {
-            lastSpeed = Time.timeScale;
-        }
-        Console.WriteLine("valueString");
-        Time.timeScale = speed;
-
+        timeStepSpeed = speed;
     }
 
-    public void start()
+    public void restartScene()
     {
-        Time.timeScale = lastSpeed;
+        var currentSceneName = SceneManager.GetActiveScene().name;
+        SceneManager.LoadSceneAsync(currentSceneName);
+        Time.timeScale = 0;
     }
 }

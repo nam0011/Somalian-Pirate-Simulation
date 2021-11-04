@@ -1,105 +1,250 @@
 Using pre-set license
-Built from '2020.3/staging' branch; Version is '2020.3.11f1 (99c7afb366b3) revision 10078127'; Using compiler version '192528614'; Build Type 'Release'
-OS: 'Windows 10 Pro; OS build 22000.258; Version 2009; 64bit' Language: 'en' Physical Memory: 32696 MB
-BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
 
  COMMAND LINE ARGUMENTS:
-F:\Unity\2020.3.11f1\Editor\Unity.exe
+/Applications/Unity/Hub/Editor/2020.3.11f1/Unity.app/Contents/MacOS/Unity
 -adb2
 -batchMode
 -noUpm
 -name
 AssetImportWorker0
 -projectPath
-C:/Users/Nathan Moore/Desktop/Pirate
+/Users/luketomlinson/Documents/GitHub/Pirate
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-49882
-Successfully changed project path to: C:/Users/Nathan Moore/Desktop/Pirate
-C:/Users/Nathan Moore/Desktop/Pirate
+55124
+Successfully changed project path to: /Users/luketomlinson/Documents/GitHub/Pirate
+/Users/luketomlinson/Documents/GitHub/Pirate
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 38.72 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 42.56 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.11f1 (99c7afb366b3)
-[Subsystems] Discovering subsystems at path F:/Unity/2020.3.11f1/Editor/Data/Resources/UnitySubsystems
-[Subsystems] Discovering subsystems at path C:/Users/Nathan Moore/Desktop/Pirate/Assets
+[Subsystems] Discovering subsystems at path /Applications/Unity/Hub/Editor/2020.3.11f1/Unity.app/Contents/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path /Users/luketomlinson/Documents/GitHub/Pirate/Assets
 GfxDevice: creating device client; threaded=0
-Direct3D:
-    Version:  Direct3D 11.0 [level 11.1]
-    Renderer: NVIDIA GeForce RTX 3070 (ID=0x2484)
-    Vendor:   
-    VRAM:     8043 MB
-    Driver:   30.0.14.9613
+2021-11-03 16:05:31.840 Unity[32205:6174557] (null) preferred device: Apple M1 (high power)
+2021-11-03 16:05:31.840 Unity[32205:6174557] Metal devices available: 1
+2021-11-03 16:05:31.841 Unity[32205:6174557] 0: Apple M1 (high power)
+2021-11-03 16:05:31.841 Unity[32205:6174557] Using device Apple M1 (high power)
+Initializing Metal device caps: Apple M1
 Initialize mono
-Mono path[0] = 'F:/Unity/2020.3.11f1/Editor/Data/Managed'
-Mono path[1] = 'F:/Unity/2020.3.11f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
-Mono config path = 'F:/Unity/2020.3.11f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56504
+Mono path[0] = '/Applications/Unity/Hub/Editor/2020.3.11f1/Unity.app/Contents/Managed'
+Mono path[1] = '/Applications/Unity/Hub/Editor/2020.3.11f1/Unity.app/Contents/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = '/Applications/Unity/Hub/Editor/2020.3.11f1/Unity.app/Contents/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56205
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
-Register platform support module: F:/Unity/2020.3.11f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.001108 seconds.
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 36.25 ms, found 3 plugins.
+Register platform support module: /Applications/Unity/Hub/Editor/2020.3.11f1/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: /Applications/Unity/Hub/Editor/2020.3.11f1/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
+Registered in 0.001580 seconds.
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 44.76 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.098 seconds
+- Completed reload, in  3.968 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.003765 seconds.
+Registered in 0.003649 seconds.
 Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 36.06 ms, found 3 plugins.
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 44.03 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.913 seconds
+- Completed reload, in  3.416 seconds
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
-Refreshing native plugins compatible for Editor in 0.51 ms, found 3 plugins.
+Launching external process: /Applications/Unity/Hub/Editor/2020.3.11f1/Unity.app/Contents/Tools/UnityShaderCompiler
+Launched and connected shader compiler UnityShaderCompiler after 0.04 seconds
+Refreshing native plugins compatible for Editor in 0.43 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 2105 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 95.2 MB.
-System memory in use after: 95.3 MB.
+System memory in use before: 181.2 MB.
+System memory in use after: 181.3 MB.
 
 Unloading 26 unused Assets to reduce memory usage. Loaded Objects now: 2551.
-Total: 2.586700 ms (FindLiveObjects: 0.226500 ms CreateObjectMapping: 0.059100 ms MarkObjects: 2.190900 ms  DeleteObjects: 0.109400 ms)
+Total: 2.198000 ms (FindLiveObjects: 0.235208 ms CreateObjectMapping: 0.045000 ms MarkObjects: 1.819834 ms  DeleteObjects: 0.096208 ms)
 
 ========================================================================
 Received Import Request.
-  path: Assets/Materials/New Material.mat
-  artifactKey: Guid(f211e79f1063c6345a9ca4dd3acebe96) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/New Material.mat using Guid(f211e79f1063c6345a9ca4dd3acebe96) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'df44f640269b5eb01b560689670b6cbd') in 0.298367 seconds
-  Import took 0.301821 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000394 seconds.
-  path: Assets/Materials/grey.mat
-  artifactKey: Guid(09178b9c8fc0e5f458cc1d8bf5d7a43c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/grey.mat using Guid(09178b9c8fc0e5f458cc1d8bf5d7a43c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f242c9edc6b920239aa437deb028e8cf') in 0.012154 seconds
-  Import took 0.015165 seconds .
+  path: Assets/scripts/shipScript.cs
+  artifactKey: Guid(8c2395c521a15054c9026e4de866db44) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/scripts/shipScript.cs using Guid(8c2395c521a15054c9026e4de866db44) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '91c414b6442c3876b8a3f5ae215e5c9d') in 0.244780 seconds
+  Import took 0.248132 seconds .
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.003498 seconds.
+Registered in 0.001745 seconds.
 Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.56 ms, found 3 plugins.
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.42 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.817 seconds
+- Completed reload, in  3.337 seconds
 Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.54 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 0.51 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 2094 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 97.8 MB.
-System memory in use after: 97.9 MB.
+System memory in use before: 185.0 MB.
+System memory in use after: 185.1 MB.
 
-Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 2594.
-Total: 2.450200 ms (FindLiveObjects: 0.231600 ms CreateObjectMapping: 0.044800 ms MarkObjects: 2.143700 ms  DeleteObjects: 0.029000 ms)
+Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 2554.
+Total: 1.602417 ms (FindLiveObjects: 0.139500 ms CreateObjectMapping: 0.041083 ms MarkObjects: 1.406916 ms  DeleteObjects: 0.014000 ms)
 
-AssetImportWorkerClient::OnTransportError - code=2 error=End of file
+========================================================================
+Received Import Request.
+  Time since last request: 51.807802 seconds.
+  path: Assets/scripts/shipScript.cs
+  artifactKey: Guid(8c2395c521a15054c9026e4de866db44) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/scripts/shipScript.cs using Guid(8c2395c521a15054c9026e4de866db44) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2463de04334764e87bff36c9acc3aa6f') in 0.009824 seconds
+  Import took 0.012204 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001094 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.43 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  3.365 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.41 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2094 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 185.2 MB.
+System memory in use after: 185.4 MB.
+
+Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 2557.
+Total: 1.612167 ms (FindLiveObjects: 0.147417 ms CreateObjectMapping: 0.041875 ms MarkObjects: 1.406334 ms  DeleteObjects: 0.015708 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 130.758735 seconds.
+  path: Assets/scripts/shipScript.cs
+  artifactKey: Guid(8c2395c521a15054c9026e4de866db44) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/scripts/shipScript.cs using Guid(8c2395c521a15054c9026e4de866db44) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5ab051e54eddc4f12a264ff5af50d95c') in 0.007628 seconds
+  Import took 0.010140 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001095 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.45 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  3.411 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.40 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2094 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 185.5 MB.
+System memory in use after: 185.6 MB.
+
+Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 2560.
+Total: 1.679792 ms (FindLiveObjects: 0.182208 ms CreateObjectMapping: 0.041125 ms MarkObjects: 1.423583 ms  DeleteObjects: 0.032000 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 116.032486 seconds.
+  path: Assets/scripts/shipScript.cs
+  artifactKey: Guid(8c2395c521a15054c9026e4de866db44) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/scripts/shipScript.cs using Guid(8c2395c521a15054c9026e4de866db44) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ddf3b8e0f6f4f99184442107f00f7d05') in 0.012470 seconds
+  Import took 0.015435 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.055424 seconds.
+  path: Assets/scripts/shipScript.cs
+  artifactKey: Guid(8c2395c521a15054c9026e4de866db44) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/scripts/shipScript.cs using Guid(8c2395c521a15054c9026e4de866db44) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ddf3b8e0f6f4f99184442107f00f7d05') in 0.002722 seconds
+  Import took 0.005531 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.005416 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.45 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  3.293 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.53 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2094 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 185.7 MB.
+System memory in use after: 185.8 MB.
+
+Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 2563.
+Total: 2.080125 ms (FindLiveObjects: 0.244084 ms CreateObjectMapping: 0.044333 ms MarkObjects: 1.763541 ms  DeleteObjects: 0.027125 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 204.731058 seconds.
+  path: Assets/scripts/shipScript.cs
+  artifactKey: Guid(8c2395c521a15054c9026e4de866db44) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/scripts/shipScript.cs using Guid(8c2395c521a15054c9026e4de866db44) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '06aaf64f57c2610c83050e3e6f89c6be') in 0.009523 seconds
+  Import took 0.012745 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001775 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.42 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  3.283 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.39 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2094 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 185.9 MB.
+System memory in use after: 186.1 MB.
+
+Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 2566.
+Total: 1.586458 ms (FindLiveObjects: 0.136125 ms CreateObjectMapping: 0.041375 ms MarkObjects: 1.394792 ms  DeleteObjects: 0.013500 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 99.447050 seconds.
+  path: Assets/scripts/shipScript.cs
+  artifactKey: Guid(8c2395c521a15054c9026e4de866db44) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/scripts/shipScript.cs using Guid(8c2395c521a15054c9026e4de866db44) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '935f87a34fb0e1ceb191d84547db50aa') in 0.006608 seconds
+  Import took 0.008980 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.003146 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.40 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  3.089 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.39 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2094 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 186.2 MB.
+System memory in use after: 186.3 MB.
+
+Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 2569.
+Total: 1.580250 ms (FindLiveObjects: 0.127625 ms CreateObjectMapping: 0.041333 ms MarkObjects: 1.394375 ms  DeleteObjects: 0.016042 ms)
+

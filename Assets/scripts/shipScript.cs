@@ -33,16 +33,18 @@ public class shipScript : MonoBehaviour
     private int patrolSpawnLocation;
 
     Text cargoCounterLabel;
-    Text pirateCounterLabel;
-    Text patrolCounterLabel;
 
     Text cargoExitedCounterLabel;
     Text pirateExitedCounterLabel;
     Text patrolExitedCounterLabel;
 
-    Text cargoEnteredCounterLabel;
+    Text cargoCapturedCounterLabel;
     Text pirateEnteredCounterLabel;
     Text patrolEnteredCounterLabel;
+
+    Text cargoSpawnProbLabel;
+    Text patrolSpawnProbLabel;
+    Text pirateSpawnProbLabel;
 
     Text timeStepCounterLabel;
 
@@ -69,96 +71,107 @@ public class shipScript : MonoBehaviour
 
         //find the UI elements
         cargoCounterLabel = GameObject.Find("CargoCounter").GetComponent<Text>();
-        pirateCounterLabel = GameObject.Find("PirateCounter").GetComponent<Text>();
-        patrolCounterLabel = GameObject.Find("PatrolCounter").GetComponent<Text>();
 
         cargoExitedCounterLabel = GameObject.Find("CargoCounter_Exited").GetComponent<Text>();
         pirateExitedCounterLabel = GameObject.Find("PirateCounter_Exited").GetComponent<Text>();
         patrolExitedCounterLabel = GameObject.Find("PatrolCounter_Exited").GetComponent<Text>();
 
-        cargoEnteredCounterLabel = GameObject.Find("CargoCounter_Entered").GetComponent<Text>();
+        cargoCapturedCounterLabel = GameObject.Find("CargoCounter_Captured").GetComponent<Text>();
         pirateEnteredCounterLabel = GameObject.Find("PirateCounter_Entered").GetComponent<Text>();
         patrolEnteredCounterLabel = GameObject.Find("PatrolCounter_Entered").GetComponent<Text>();
+
+        cargoSpawnProbLabel = GameObject.Find("CargoSpawnProbability").GetComponent<Text>();
+        patrolSpawnProbLabel = GameObject.Find("PatrolSpawnProbability").GetComponent<Text>();
+        pirateSpawnProbLabel = GameObject.Find("PirateSpawnProbability").GetComponent<Text>();
 
         timeStepCounterLabel = GameObject.Find("TimeStepCounter").GetComponent<Text>();
 
         // initialize the UI elements
-        cargoCounterLabel.text = "Cargos Current: " + GameObject.FindGameObjectsWithTag("cargo").Length.ToString();
-        pirateCounterLabel.text = "Pirates Current: " + GameObject.FindGameObjectsWithTag("pirate").Length.ToString();
-        patrolCounterLabel.text = "Patrols Current: " + GameObject.FindGameObjectsWithTag("patrol").Length.ToString();
+        cargoCounterLabel.text = "Cargos Entered: " + GameObject.FindGameObjectsWithTag("cargo").Length.ToString();
 
         cargoExitedCounterLabel.text = "Cargos Exited: " + cargosExit.ToString();
         pirateExitedCounterLabel.text = "Pirates Exited: " + piratesExit.ToString();
         patrolExitedCounterLabel.text = "Patrols Exited: " + patrolsExit.ToString();
 
-        cargoEnteredCounterLabel.text = "Cargos Entered: " + cargosEnter.ToString();
+        cargoCapturedCounterLabel.text = "Cargos Captured: " + cargosEnter.ToString();
         pirateEnteredCounterLabel.text = "Pirates Entered: " + piratesEnter.ToString();
         patrolEnteredCounterLabel.text = "Patrols Entered: " + patrolsEnter.ToString();
 
         timeStepCounterLabel.text = "Time Step: " + timeStepCounter.ToString();
 
-        InvokeRepeating("spawnShip", 0.0f, 1.0f);
+        cargoSpawnProbLabel.text = "Cargo Spawn %: " + cargoSpawnProbability.ToString();
+        patrolSpawnProbLabel.text = "Patrol Spawn %: " + patrolSpawnProbability.ToString();
+        pirateSpawnProbLabel.text = "Pirate Spawn %: " + pirateSpawnProbability.ToString();
+
         InvokeRepeating("updateCounters", 0.0f, 1.0f);
+        InvokeRepeating("updateSpawnPerc", 0.0f, 0.1f);
+        InvokeRepeating("spawnShip", 0.0f, 1.0f);
     }
+
     void Update()
     {
-        if (Input.GetKeyDown("" + 1))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            cargoSpawnProbability = 50;
+            cargoSpawnProbability = 50; //default -- spawn half of the time
         }
-        else if (Input.GetKeyDown("" + 2))
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            cargoSpawnProbability = 75;
+            cargoSpawnProbability = 75; //spawn most of time
         }
-        else if (Input.GetKeyDown("" + 3))
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            cargoSpawnProbability = 90;
-        }
-
-        if (Input.GetKeyDown("" + 4))
-        {
-            patrolSpawnProbability = 25;
-        }
-        else if (Input.GetKeyDown("" + 5))
-        {
-            patrolSpawnProbability = 50;
-        }
-        else if (Input.GetKeyDown("" + 6))
-        {
-            patrolSpawnProbability = 70;
+            cargoSpawnProbability = 100; //always spawn
         }
 
-        if (Input.GetKeyDown("" + 7))
+        if (Input.GetKeyDown(KeyCode.Alpha4))
         {
-            pirateSpawnProbability = 40;
+            patrolSpawnProbability = 25;    //default -- spawn some of the time
         }
-        else if (Input.GetKeyDown("" + 8))
+        else if (Input.GetKeyDown(KeyCode.Alpha5))
         {
-            pirateSpawnProbability = 60;
+            patrolSpawnProbability = 50;    //spawn half of the time
         }
-        else if (Input.GetKeyDown("" + 9))
+        else if (Input.GetKeyDown(KeyCode.Alpha6))
         {
-            pirateSpawnProbability = 80;
+            patrolSpawnProbability = 100; //always spawn
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha7))
+        {
+            pirateSpawnProbability = 40; //default -- spawn almost half of the time
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha8))
+        {
+            pirateSpawnProbability = 75; //spawn most of the time
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha9))
+        {
+            pirateSpawnProbability = 100; //always spawn
         }
     }
 
     private void updateCounters()
     {
         // set the text for each counter by getting the length of the array of GameObjects with the corresponding tag
-        cargoCounterLabel.text = "Cargos Current: " + GameObject.FindGameObjectsWithTag("cargo").Length.ToString();
-        pirateCounterLabel.text = "Pirates Current: " + GameObject.FindGameObjectsWithTag("pirate").Length.ToString();
-        patrolCounterLabel.text = "Patrols Current: " + GameObject.FindGameObjectsWithTag("patrol").Length.ToString();
+        cargoCounterLabel.text = "Cargos Entered: " + GameObject.FindGameObjectsWithTag("cargo").Length.ToString();
 
         cargoExitedCounterLabel.text = "Cargos Exited: " + cargosExit.ToString();
         pirateExitedCounterLabel.text = "Pirates Exited: " + piratesExit.ToString();
         patrolExitedCounterLabel.text = "Patrols Exited: " + patrolsExit.ToString();
 
-        cargoEnteredCounterLabel.text = "Cargos Entered: " + cargosEnter.ToString();
+        cargoCapturedCounterLabel.text = "Cargos Captured: " + cargosEnter.ToString();
         pirateEnteredCounterLabel.text = "Pirates Entered: " + piratesEnter.ToString();
         patrolEnteredCounterLabel.text = "Patrols Entered: " + patrolsEnter.ToString();
 
-
         timeStepCounterLabel.text = "Time Step: " + timeStepCounter++.ToString();
+    }
+
+    private void updateSpawnPerc()
+    {
+        cargoSpawnProbLabel.text = "Cargo Spawn %: " + cargoSpawnProbability.ToString();
+        patrolSpawnProbLabel.text = "Patrol Spawn %: " + patrolSpawnProbability.ToString();
+        pirateSpawnProbLabel.text = "Pirate Spawn %: " + pirateSpawnProbability.ToString();
+
     }
 
     private void spawnShip()

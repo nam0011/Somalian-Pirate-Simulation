@@ -7,17 +7,20 @@ public class patrol : MonoBehaviour {
     public Transform movePoint;
     public List<Transform> interactionPoints;
 
+    private Vector3 origPos;
+    private float speed = 10000000;
+
     // Start is called before the first frame update
     void Start() {
         InvokeRepeating("move", 1.0f, 1.0f);
     }
 
     private void move() {
-        // move 1 grid
-        transform.position = new Vector3(transform.position.x -10.0f, transform.position.y, transform.position.z);
+        float step = speed * Time.deltaTime;
+        transform.position = Vector3.MoveTowards(transform.position, movePoint.position, step);
 
         // if we moved passed map boundary, remove ship from simulation
-        if (transform.position.x <= -301.0f) {
+        if (transform.position.x <= -45) {
             Destroy(this.gameObject);
             shipScript.patrolsExit++;
         }

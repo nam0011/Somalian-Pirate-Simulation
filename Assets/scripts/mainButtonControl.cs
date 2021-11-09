@@ -31,6 +31,8 @@ public class mainButtonControl : MonoBehaviour
     public int currentTimeStep = 0;
     public int testTimeStep = 0;
 
+    Text currentSpeedLabel;
+
     void Awake()
     {
         Time.timeScale = 0;
@@ -57,12 +59,18 @@ public class mainButtonControl : MonoBehaviour
         start.onClick.AddListener(() => StartSim());
         restart.onClick.AddListener(() => restartScene());
         singleStep.onClick.AddListener(() => singleStepSim());
+
+        currentSpeed = 0;
+
+        currentSpeedLabel = GameObject.Find("SpeedDisplay").GetComponent<Text>();
+        currentSpeedLabel.text = "Speed: " + currentSpeed.ToString() + "X";
     }
 
     // Update is called once per frame
     void Update()
     {
         InvokeRepeating("checkSpeed", 0, 0.1f); //check to see if we are paused
+        InvokeRepeating("displaySpeed", 0, 0.1f); //display the speed we are currently using
         Time.timeScale = startSpeed; //speed tied to start button is all that is ever seen by sim
         InvokeRepeating("getTimeStep", 0, 0.1f);
     }
@@ -77,6 +85,11 @@ public class mainButtonControl : MonoBehaviour
         startSpeed = 0; //pause button forces 0 as current speed
     }
 
+    void displaySpeed()
+    {
+        currentSpeedLabel.text = "Speed: " + currentSpeed.ToString() + "X";
+
+    }
     void checkSpeed() //check to see if we are paused or not
     {
         if (startSpeed != 0) //if not paused

@@ -32,6 +32,7 @@ public class shipScript : MonoBehaviour
     private int pirateSpawnLocation;
     private int patrolSpawnLocation;
 
+
     Text cargoCounterLabel;
 
     Text cargoExitedCounterLabel;
@@ -47,7 +48,6 @@ public class shipScript : MonoBehaviour
     Text pirateSpawnProbLabel;
 
     Text timeStepCounterLabel;
-
 
     private int cargoSpawnProbability = 50;
     private int patrolSpawnProbability = 25;
@@ -68,6 +68,7 @@ public class shipScript : MonoBehaviour
         evadesNotCapture = 0;
         evadesCapture = 0;
         timeStepCounter = 0;
+
 
         //find the UI elements
         cargoCounterLabel = GameObject.Find("CargoCounter").GetComponent<Text>();
@@ -102,7 +103,6 @@ public class shipScript : MonoBehaviour
         cargoSpawnProbLabel.text = "Cargo Spawn %: " + cargoSpawnProbability.ToString();
         patrolSpawnProbLabel.text = "Patrol Spawn %: " + patrolSpawnProbability.ToString();
         pirateSpawnProbLabel.text = "Pirate Spawn %: " + pirateSpawnProbability.ToString();
-
         InvokeRepeating("updateCounters", 0.0f, 1.0f);
         InvokeRepeating("updateSpawnPerc", 0.0f, 0.1f);
         InvokeRepeating("spawnShip", 0.0f, 1.0f);

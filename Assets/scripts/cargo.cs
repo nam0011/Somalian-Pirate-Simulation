@@ -7,6 +7,7 @@ public class cargo : MonoBehaviour {
     public Transform movePoint;
     public Transform evadeTarget;
     public List<Transform> interactionPoints;
+    private List<int> piratesEvaded = new List<int>(); // a Cargo may only evade each Pirate once
 
     private Vector3 origPos;
     private float speed = 10000000;
@@ -53,10 +54,11 @@ public class cargo : MonoBehaviour {
                 // loop over Pirates
                 foreach (GameObject p in pirates) {
                     // check if Pirate is at the sensor
-                    if (Vector2.Distance(sensor.position, p.transform.position) <= 12.0) {
+                    if (Vector2.Distance(sensor.position, p.transform.position) <= 6.8 && !piratesEvaded.Contains(p.GetInstanceID())) {
                         // then Cargo should evade
                         transform.position = Vector3.MoveTowards(transform.position, evadeTarget.position, speed * Time.deltaTime);
                         shipScript.evadesNotCapture += 1; // needs to be decremented if captured
+                        piratesEvaded.Add(p.GetInstanceID());
                     }
                 }
             }

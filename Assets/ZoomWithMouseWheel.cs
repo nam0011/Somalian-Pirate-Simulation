@@ -13,28 +13,39 @@ public class ZoomWithMouseWheel : MonoBehaviour
     public float sensitivity = 1;
     public float speed = 10;
     public float targetZoom = 35;
-
+    private float newSize;
     // Start is called before the first frame update
     void Start()
     {
         ZoomCamera = Camera.main;
-        ZoomCamera.orthographicSize = 35;
+        ZoomCamera.orthographicSize = 50;
+
+        InvokeRepeating("UpdateCameraLocation", 0.0f, 0.0001f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-         targetZoom -= Input.mouseScrollDelta.y * sensitivity;
-         targetZoom = Mathf.Clamp(targetZoom, maxZoom, minZoom);
-         float newSize = Mathf.MoveTowards(ZoomCamera.orthographicSize, targetZoom, speed * Time.deltaTime);
-         ZoomCamera.orthographicSize = newSize;
-         
 
-         /*
-        if (ZoomCamera.orthographic)
-                ZoomCamera.orthographicSize -= Input.GetAxis("Mouse ScrollWheel") * ScrollSpeed;
-        */
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            ZoomCamera.orthographicSize = 50;
+            targetZoom = 50;
+            InvokeRepeating("UpdateCameraLocation", 0.0f, 0.0001f);
+        }
+        else if (Input.GetKeyDown(KeyCode.F))
+        {
+            targetZoom = 500;
+            ZoomCamera.orthographicSize = 500;
+        }
+    }
+
+    void UpdateCameraLocation()
+    {
+        targetZoom -= Input.mouseScrollDelta.y * sensitivity;
+        targetZoom = Mathf.Clamp(targetZoom, maxZoom, minZoom);
+        newSize = Mathf.MoveTowards(ZoomCamera.orthographicSize, targetZoom, speed * Time.deltaTime);
+        ZoomCamera.orthographicSize = newSize;
     }
 
 }

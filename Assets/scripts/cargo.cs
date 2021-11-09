@@ -29,6 +29,35 @@ public class cargo : MonoBehaviour {
         }
     }
 
+    /* this method should be called each timestep. It shall check if any
+    * Pirate ships are overlapping with the evade sensors and move the
+    * Cargo 1 grid northeast if so.
+    */
+    private void evadeAction()
+    {
+        // get all Pirates
+        GameObject[] pirates = GameObject.FindGameObjectsWithTag("pirate");
+        // looping thru evade sensors
+        foreach (Transform sensor in interactionPoints)
+        {
+            if (sensor.tag == "evadeSensor")
+            {
+                // loop over Pirates
+                foreach (GameObject p in pirates)
+                {
+                    // check if Pirate is at the sensor
+                    if (Vector2.Distance(sensor.position, p.transform.position) <= 6.8 && !piratesEvaded.Contains(p.GetInstanceID()))
+                    {
+                        // then Cargo should evade
+                        transform.position = Vector3.MoveTowards(transform.position, evadeTarget.position, speed * Time.deltaTime);
+                        shipScript.evadesNotCaptured += 1; // needs to be decremented if captured
+                        piratesEvaded.Add(p.GetInstanceID());
+                    }
+                }
+            }
+        }
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
@@ -41,27 +70,5 @@ public class cargo : MonoBehaviour {
         }
     }
 
-    /* this method should be called each timestep. It shall check if any
-    * Pirate ships are overlapping with the evade sensors and move the
-    * Cargo 1 grid northeast if so.
-    */
-    private void evadeAction() {
-        // get all Pirates
-        GameObject[] pirates = GameObject.FindGameObjectsWithTag("pirate");
-        // looping thru evade sensors
-        foreach (Transform sensor in interactionPoints) {
-            if (sensor.tag == "evadeSensor") {
-                // loop over Pirates
-                foreach (GameObject p in pirates) {
-                    // check if Pirate is at the sensor
-                    if (Vector2.Distance(sensor.position, p.transform.position) <= 6.8 && !piratesEvaded.Contains(p.GetInstanceID())) {
-                        // then Cargo should evade
-                        transform.position = Vector3.MoveTowards(transform.position, evadeTarget.position, speed * Time.deltaTime);
-                        shipScript.evadesNotCapture += 1; // needs to be decremented if captured
-                        piratesEvaded.Add(p.GetInstanceID());
-                    }
-                }
-            }
-        }
-    }
+    
 }

@@ -15,6 +15,7 @@ public class shipScript : MonoBehaviour
     public List<Transform> pirateSpawn;
     public List<Transform> patrolSpawn;
 
+    
     public static int cargosEnter;
     public static int cargosExit;
     public static int cargosCapture;
@@ -24,8 +25,8 @@ public class shipScript : MonoBehaviour
     public static int piratesEnter;
     public static int piratesExit;
     public static int piratesDefeat;
-    public static int evadesNotCapture;
-    public static int evadesCapture;
+    public static int evadesNotCaptured;
+    public static int evadesCaptured;
     public static int timeStepCounter;
 
     private int cargoSpawnLocation;
@@ -47,6 +48,9 @@ public class shipScript : MonoBehaviour
     Text patrolSpawnProbLabel;
     Text pirateSpawnProbLabel;
 
+    Text evadesNotCapturedLabel;
+    Text evadesCapturedLabel;
+
     Text timeStepCounterLabel;
 
     private int cargoSpawnProbability = 50;
@@ -65,8 +69,8 @@ public class shipScript : MonoBehaviour
         piratesEnter = 0;
         piratesExit = 0;
         piratesDefeat = 0;
-        evadesNotCapture = 0;
-        evadesCapture = 0;
+        evadesNotCaptured = 0;
+        evadesCaptured = 0;
         timeStepCounter = 0;
 
 
@@ -80,6 +84,9 @@ public class shipScript : MonoBehaviour
         cargoCapturedCounterLabel = GameObject.Find("CargoCounter_Captured").GetComponent<Text>();
         pirateEnteredCounterLabel = GameObject.Find("PirateCounter_Entered").GetComponent<Text>();
         patrolEnteredCounterLabel = GameObject.Find("PatrolCounter_Entered").GetComponent<Text>();
+
+        evadesCapturedLabel = GameObject.Find("EvadesCapturedCounter").GetComponent<Text>();
+        evadesNotCapturedLabel = GameObject.Find("EvadesNotCapturedCounter").GetComponent<Text>();
 
         cargoSpawnProbLabel = GameObject.Find("CargoSpawnProbability").GetComponent<Text>();
         patrolSpawnProbLabel = GameObject.Find("PatrolSpawnProbability").GetComponent<Text>();
@@ -98,11 +105,15 @@ public class shipScript : MonoBehaviour
         pirateEnteredCounterLabel.text = "Pirates Entered: " + piratesEnter.ToString();
         patrolEnteredCounterLabel.text = "Patrols Entered: " + patrolsEnter.ToString();
 
+        evadesCapturedLabel.text = "Evades Captured: " + evadesCaptured.ToString();
+        evadesNotCapturedLabel.text = "Evades Not Captured: " + evadesNotCaptured.ToString();
+
         timeStepCounterLabel.text = "Time Step: " + timeStepCounter.ToString();
 
         cargoSpawnProbLabel.text = "Cargo Spawn %: " + cargoSpawnProbability.ToString();
         patrolSpawnProbLabel.text = "Patrol Spawn %: " + patrolSpawnProbability.ToString();
         pirateSpawnProbLabel.text = "Pirate Spawn %: " + pirateSpawnProbability.ToString();
+
         InvokeRepeating("updateCounters", 0.0f, 1.0f);
         InvokeRepeating("updateSpawnPerc", 0.0f, 0.1f);
         InvokeRepeating("spawnShip", 0.0f, 1.0f);
@@ -154,15 +165,18 @@ public class shipScript : MonoBehaviour
     {
         // set the text for each counter by getting the length of the array of GameObjects with the corresponding tag
         cargoCounterLabel.text = "Cargos Entered: " + GameObject.FindGameObjectsWithTag("cargo").Length.ToString();
-
+        cargoCapturedCounterLabel.text = "Cargos Captured: " + cargosCapture.ToString();
         cargoExitedCounterLabel.text = "Cargos Exited: " + cargosExit.ToString();
+
+        pirateEnteredCounterLabel.text = "Pirates Entered: " + piratesEnter.ToString();
         pirateExitedCounterLabel.text = "Pirates Exited: " + piratesExit.ToString();
+
+        patrolEnteredCounterLabel.text = "Patrols Entered: " + patrolsEnter.ToString();
         patrolExitedCounterLabel.text = "Patrols Exited: " + patrolsExit.ToString();
 
-        cargoCapturedCounterLabel.text = "Cargos Captured: " + cargosEnter.ToString();
-        pirateEnteredCounterLabel.text = "Pirates Entered: " + piratesEnter.ToString();
-        patrolEnteredCounterLabel.text = "Patrols Entered: " + patrolsEnter.ToString();
-
+        evadesCapturedLabel.text = "Evades Captured: " + evadesCaptured.ToString();      
+        evadesNotCapturedLabel.text = "Evades Not Captured: " + evadesNotCaptured.ToString();
+        
         timeStepCounterLabel.text = "Time Step: " + timeStepCounter++.ToString();
     }
 

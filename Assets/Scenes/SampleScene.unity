@@ -9231,8 +9231,8 @@ MonoBehaviour:
   _mainAreaHeight: 9
   _verticalFOV: 144.94547
   _horizontalFOV: 159.85301
-  _verticalSize: 30
-  _horizontalSize: 53.333332
+  _verticalSize: 50
+  _horizontalSize: 88.88889
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -9260,7 +9260,7 @@ Camera:
   far clip plane: 100
   field of view: 144.94547
   orthographic: 1
-  orthographic size: 30
+  orthographic size: 50.000004
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -9314,7 +9314,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41169fe8f1d638048bbfd8e5501b0527, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ScrollSpeed: 50
+  ScrollSpeed: 100
+  maxZoom: 10
+  minZoom: 400
+  sensitivity: 1
+  speed: 10
+  targetZoom: 50
 --- !u!1 &524891347
 GameObject:
   m_ObjectHideFlags: 0

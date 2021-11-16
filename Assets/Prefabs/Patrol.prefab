@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5931222550076215675}
   m_Layer: 0
   m_Name: Sensor
-  m_TagString: Untagged
+  m_TagString: defeatSensor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 4438636301904067243}
   m_Layer: 0
   m_Name: Sensor
-  m_TagString: Untagged
+  m_TagString: defeatSensor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -71,7 +71,7 @@ GameObject:
   - component: {fileID: 439282730144692767}
   m_Layer: 0
   m_Name: Sesnsor
-  m_TagString: Untagged
+  m_TagString: defeatSensor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 4931342593267373869}
   m_Layer: 0
   m_Name: Sensor
-  m_TagString: Untagged
+  m_TagString: defeatSensor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -162,7 +162,7 @@ GameObject:
   - component: {fileID: 4008991075799782375}
   m_Layer: 0
   m_Name: Sensor
-  m_TagString: Untagged
+  m_TagString: defeatSensor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -192,7 +192,7 @@ GameObject:
   - component: {fileID: 7899384008296472952}
   m_Layer: 0
   m_Name: Sensor
-  m_TagString: Untagged
+  m_TagString: defeatSensor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -252,7 +252,7 @@ GameObject:
   - component: {fileID: 511477524125873300}
   m_Layer: 0
   m_Name: Sensor
-  m_TagString: Untagged
+  m_TagString: defeatSensor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -396,7 +396,7 @@ GameObject:
   - component: {fileID: 2921321035777250983}
   m_Layer: 0
   m_Name: Sensor
-  m_TagString: Untagged
+  m_TagString: defeatSensor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

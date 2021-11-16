@@ -15,7 +15,7 @@ public class shipScript : MonoBehaviour
     public List<Transform> pirateSpawn;
     public List<Transform> patrolSpawn;
 
-    
+
     public static int cargosEnter;
     public static int cargosExit;
     public static int cargosCapture;
@@ -43,6 +43,8 @@ public class shipScript : MonoBehaviour
     Text cargoCapturedCounterLabel;
     Text pirateEnteredCounterLabel;
     Text patrolEnteredCounterLabel;
+
+    Text pirateDefeatedCounterLabel;
 
     Text cargoSpawnProbLabel;
     Text patrolSpawnProbLabel;
@@ -94,6 +96,8 @@ public class shipScript : MonoBehaviour
 
         timeStepCounterLabel = GameObject.Find("TimeStepCounter").GetComponent<Text>();
 
+        pirateDefeatedCounterLabel = GameObject.Find("PirateDefeatedCounter").GetComponent<Text>();
+
         // initialize the UI elements
         cargoCounterLabel.text = "Cargos Entered: " + GameObject.FindGameObjectsWithTag("cargo").Length.ToString();
 
@@ -104,6 +108,8 @@ public class shipScript : MonoBehaviour
         cargoCapturedCounterLabel.text = "Cargos Captured: " + cargosEnter.ToString();
         pirateEnteredCounterLabel.text = "Pirates Entered: " + piratesEnter.ToString();
         patrolEnteredCounterLabel.text = "Patrols Entered: " + patrolsEnter.ToString();
+
+        pirateDefeatedCounterLabel.text = "Pirates Defeated: " + piratesDefeat.ToString();
 
         evadesCapturedLabel.text = "Evades Captured: " + evadesCaptured.ToString();
         evadesNotCapturedLabel.text = "Evades Not Captured: " + evadesNotCaptured.ToString();
@@ -174,9 +180,11 @@ public class shipScript : MonoBehaviour
         patrolEnteredCounterLabel.text = "Patrols Entered: " + patrolsEnter.ToString();
         patrolExitedCounterLabel.text = "Patrols Exited: " + patrolsExit.ToString();
 
-        evadesCapturedLabel.text = "Evades Captured: " + evadesCaptured.ToString();      
+        evadesCapturedLabel.text = "Evades Captured: " + evadesCaptured.ToString();
         evadesNotCapturedLabel.text = "Evades Not Captured: " + evadesNotCaptured.ToString();
-        
+
+        pirateDefeatedCounterLabel.text = "Pirates Defeated: " + piratesDefeat.ToString();
+
         timeStepCounterLabel.text = "Time Step: " + timeStepCounter++.ToString();
     }
 

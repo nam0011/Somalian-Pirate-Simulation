@@ -30,6 +30,36 @@ Transform:
   m_Father: {fileID: 6583150713209201799}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &287549969786248317
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3766941000249913579}
+  m_Layer: 0
+  m_Name: Sensor (10)
+  m_TagString: captureSensor
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3766941000249913579
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 287549969786248317}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.25, y: 1.25, z: 0}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6583150713209201799}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &408514956963641449
 GameObject:
   m_ObjectHideFlags: 0
@@ -130,6 +160,8 @@ Transform:
   - {fileID: 5908799242659637567}
   - {fileID: 2644730726594802685}
   - {fileID: 1186657612793116013}
+  - {fileID: 9041564756637468291}
+  - {fileID: 3766941000249913579}
   m_Father: {fileID: 5228513790183690640}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -208,6 +240,36 @@ MonoBehaviour:
   - {fileID: 5908799242659637567}
   - {fileID: 2644730726594802685}
   - {fileID: 1186657612793116013}
+--- !u!1 &3844153928281360379
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9041564756637468291}
+  m_Layer: 0
+  m_Name: Sensor (9)
+  m_TagString: captureSensor
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9041564756637468291
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3844153928281360379}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.25, y: 0, z: 0}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6583150713209201799}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4383888155366046284
 GameObject:
   m_ObjectHideFlags: 0
@@ -309,7 +371,7 @@ GameObject:
   - component: {fileID: 9160654611529610609}
   m_Layer: 0
   m_Name: Sensor (3)
-  m_TagString: Untagged
+  m_TagString: captureSensor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -369,7 +431,7 @@ GameObject:
   - component: {fileID: 1453552299142445405}
   m_Layer: 0
   m_Name: Sensor (1)
-  m_TagString: Untagged
+  m_TagString: captureSensor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -460,7 +522,7 @@ GameObject:
   - component: {fileID: 8958309228035144820}
   m_Layer: 0
   m_Name: Sensor (2)
-  m_TagString: Untagged
+  m_TagString: captureSensor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

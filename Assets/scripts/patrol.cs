@@ -35,6 +35,7 @@ public class patrol : MonoBehaviour
     private void defeatPirate()
     {
         GameObject[] pirates = GameObject.FindGameObjectsWithTag("pirate");
+        GameObject[] cargos = GameObject.FindGameObjectsWithTag("cargo");
 
         foreach (Transform sensor in interactionPoints)
         {
@@ -43,11 +44,22 @@ public class patrol : MonoBehaviour
                 // loop over Pirates
                 foreach (GameObject p in pirates)
                 {
-                    // check if Pirate is at the sensor
-                    if (Vector2.Distance(sensor.position, p.transform.position) <= 5)
+                    foreach (GameObject c in cargos)
                     {
-                        shipScript.piratesDefeat += 1;
-                        Destroy(p);
+                        // check if Pirate is at the sensor
+                        if (Vector2.Distance(sensor.position, p.transform.position) <= 5)
+                        {
+                            shipScript.piratesDefeat += 1;
+                            //CHECKING IF THE PIRATE HAS A CAPTURE AND SETTING ROTATION BACK
+                            if (p.transform.GetComponent<pirate>().hasCapture == true )
+                            {
+                                
+                                    Debug.Log("this rotated the cargos");
+                                    c.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
+                                
+                            }
+                            Destroy(p);
+                        }
                     }
                 }
             }

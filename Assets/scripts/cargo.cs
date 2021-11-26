@@ -8,7 +8,7 @@ public class cargo : MonoBehaviour {
     public Transform evadeTarget;
     public List<Transform> interactionPoints;
     private List<int> piratesEvaded = new List<int>(); // a Cargo may only evade each Pirate once
-    private bool isCaptured = false;
+    public bool isCaptured = false;
 
     private Vector3 origPos;
     private float speed = 10000000;

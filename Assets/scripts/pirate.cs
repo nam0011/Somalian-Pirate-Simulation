@@ -7,6 +7,7 @@ public class pirate : MonoBehaviour
 
     public Transform movePoint;
     public bool hasCapture = false;
+    public cargo captureInstance;
     private Vector3 origPos;
     private float speed = 10000000;
 

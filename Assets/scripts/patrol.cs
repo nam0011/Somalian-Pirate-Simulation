@@ -10,12 +10,13 @@ public class patrol : MonoBehaviour
 
     private Vector3 origPos;
     private float speed = 10000000;
+    public cargo rescue;
 
     // Start is called before the first frame update
     void Start()
     {
         InvokeRepeating("move", 1.0f, 1.0f);
-        InvokeRepeating("defeatPirate", 1.0f, 1.0f);
+        InvokeRepeating("defeatPirate", 1.01f, 1.01f);
 
     }
 
@@ -35,7 +36,6 @@ public class patrol : MonoBehaviour
     private void defeatPirate()
     {
         GameObject[] pirates = GameObject.FindGameObjectsWithTag("pirate");
-        GameObject[] cargos = GameObject.FindGameObjectsWithTag("cargo");
 
         foreach (Transform sensor in interactionPoints)
         {
@@ -44,22 +44,16 @@ public class patrol : MonoBehaviour
                 // loop over Pirates
                 foreach (GameObject p in pirates)
                 {
-                    foreach (GameObject c in cargos)
-                    {
-                        // check if Pirate is at the sensor
-                        if (Vector2.Distance(sensor.position, p.transform.position) <= 5)
-                        {
-                            shipScript.piratesDefeat += 1;
-                            //CHECKING IF THE PIRATE HAS A CAPTURE AND SETTING ROTATION BACK
-                            if (p.transform.GetComponent<pirate>().hasCapture == true )
-                            {
-                                
-                                    Debug.Log("this rotated the cargos");
-                                    c.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
-                                
-                            }
-                            Destroy(p);
+                    // check if Pirate is at the sensor
+                    if (Vector2.Distance(sensor.position, p.transform.position) <= 6.8f) {
+                        //CHECKING IF THE PIRATE HAS A CAPTURE AND SETTING MOVE POINT & ROTATION BACK
+                        Console.WriteLine("PIRATE SENSED!!!!!!!");
+                        if (p.transform.GetComponent<pirate>().hasCapture == true) {
+                            Debug.Log("ATTEMPTING TO RESCUE");
+                            p.transform.GetComponent<pirate>().captureInstance.setCargo();
                         }
+                        Destroy(p);
+                        shipScript.piratesDefeat += 1;
                     }
                 }
             }

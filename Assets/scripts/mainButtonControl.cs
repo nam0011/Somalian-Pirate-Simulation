@@ -76,6 +76,7 @@ public class mainButtonControl : MonoBehaviour
     void ChangeSpeed(float timeStep)
     {
         currentSpeed = 1.0f / timeStep; //buttons change the current speed
+        displaySpeed(timeStep);
     }
 
     void Pause()
@@ -83,9 +84,9 @@ public class mainButtonControl : MonoBehaviour
         InvokeUtil.isPaused = true; //pause button forces 0 as current speed
     }
 
-    void displaySpeed()
+    void displaySpeed(float time)
     {
-        currentSpeedLabel.text = "Speed: " + currentSpeed.ToString() + "X";
+        currentSpeedLabel.text = "Speed: " + time.ToString() + "X";
 
     }
     void checkSpeed() //check to see if we are paused or not
@@ -124,7 +125,7 @@ public class mainButtonControl : MonoBehaviour
 
     public void singleStepSim()
     {
-        if(startSpeed == 0) //if we are paused
+        if (startSpeed == 0) //if we are paused
         {
             testTimeStep = currentTimeStep - 1; //save the step we are on
             while (testTimeStep <= currentTimeStep) //while we are equal to that step let us increment by 1

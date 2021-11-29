@@ -23,23 +23,6 @@ public class ZoomWithMouseWheel : MonoBehaviour
         InvokeRepeating("UpdateCameraLocation", 0.0f, 0.0001f);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            ZoomCamera.orthographicSize = 50;
-            targetZoom = 50;
-            InvokeRepeating("UpdateCameraLocation", 0.0f, 0.0001f);
-        }
-        else if (Input.GetKeyDown(KeyCode.F))
-        {
-            targetZoom = 500;
-            ZoomCamera.orthographicSize = 500;
-        }
-    }
-
     void UpdateCameraLocation()
     {
         targetZoom -= Input.mouseScrollDelta.y * sensitivity;

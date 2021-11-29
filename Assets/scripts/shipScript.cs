@@ -122,6 +122,7 @@ public class shipScript : MonoBehaviour
         cargoSpawnProbLabel.text = "Cargo Spawn %: " + cargoSpawnProbability.ToString();
         patrolSpawnProbLabel.text = "Patrol Spawn %: " + patrolSpawnProbability.ToString();
         pirateSpawnProbLabel.text = "Pirate Spawn %: " + pirateSpawnProbability.ToString();
+
     }
 
     void Update()
@@ -174,6 +175,8 @@ public class shipScript : MonoBehaviour
         {
             pirateSpawnProbability = 100; //always spawn
         }
+
+        updateSpawnPerc();
     }
 
     private void updateCounters()

@@ -52,6 +52,7 @@
      <Compile Include="Assets\scripts\PatrolSpawnColorGizmo.cs" />
      <Compile Include="Assets\scripts\PirateSpawnGizmoPaint.cs" />
      <Compile Include="Assets\scripts\pirate.cs" />
+     <Compile Include="Assets\scripts\InvokeUtil.cs" />
      <Compile Include="Assets\scripts\cargo.cs" />
      <Compile Include="Assets\scripts\mainButtonControl.cs" />
      <Compile Include="Assets\ButtonHandler.cs" />

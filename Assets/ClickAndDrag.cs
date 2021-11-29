@@ -6,6 +6,10 @@ public class ClickAndDrag : MonoBehaviour
     Vector2 mouseClickPos;
     Vector2 mouseCurrentPos;
     bool panning = false;
+    public float LeftXMax;
+    public float RightXMax;
+    public float BottomYMax;
+    public float TopYMax;
 
     private void Update()
     {
@@ -25,8 +29,8 @@ public class ClickAndDrag : MonoBehaviour
 
             //function calls to keep camera in bounds
             Vector3 pos = transform.position;
-            pos.x = Mathf.Clamp(transform.position.x, 42, 2544);
-            pos.y = Mathf.Clamp(transform.position.y, 22, 538);
+            pos.x = Mathf.Clamp(transform.position.x, LeftXMax, RightXMax);
+            pos.y = Mathf.Clamp(transform.position.y, BottomYMax, TopYMax);
             transform.position = pos;
         }
 

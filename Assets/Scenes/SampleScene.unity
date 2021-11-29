@@ -9302,6 +9302,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 794055d424454e84c9864da18f9ddd41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LeftXMax: 42
+  RightXMax: 2544
+  BottomYMax: 22
+  TopYMax: 538
 --- !u!114 &519420034
 MonoBehaviour:
   m_ObjectHideFlags: 0

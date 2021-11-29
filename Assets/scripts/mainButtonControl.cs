@@ -23,7 +23,7 @@ public class mainButtonControl : MonoBehaviour
     public Button singleStep;
     ButtonHandler singleScript;
 
-    public float currentSpeed = 0f;
+    public static float currentSpeed = 1.0f;
     public float startSpeed = 0f;
 
     public GameObject shipSpawn;
@@ -35,7 +35,7 @@ public class mainButtonControl : MonoBehaviour
 
     void Awake()
     {
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
     }
 
     // Start is called before the first frame update
@@ -51,16 +51,14 @@ public class mainButtonControl : MonoBehaviour
         timeCounter = shipSpawn.GetComponent<shipScript>();
         singleScript = singleStep.GetComponent<ButtonHandler>();
 
-        speed1.onClick.AddListener(() => ChangeSpeed(1));
-        speed2.onClick.AddListener(() => ChangeSpeed(2));
-        speed10.onClick.AddListener(() => ChangeSpeed(10));
-        speed20.onClick.AddListener(() => ChangeSpeed(20));
+        speed1.onClick.AddListener(() => ChangeSpeed(1f));
+        speed2.onClick.AddListener(() => ChangeSpeed(2f));
+        speed10.onClick.AddListener(() => ChangeSpeed(10f));
+        speed20.onClick.AddListener(() => ChangeSpeed(20f));
         pause.onClick.AddListener(() => Pause());
         start.onClick.AddListener(() => StartSim());
         restart.onClick.AddListener(() => restartScene());
         singleStep.onClick.AddListener(() => singleStepSim());
-
-        currentSpeed = 0;
 
         currentSpeedLabel = GameObject.Find("SpeedDisplay").GetComponent<Text>();
         currentSpeedLabel.text = "Speed: " + currentSpeed.ToString() + "X";
@@ -69,20 +67,20 @@ public class mainButtonControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        InvokeRepeating("checkSpeed", 0, 0.1f); //check to see if we are paused
-        InvokeRepeating("displaySpeed", 0, 0.1f); //display the speed we are currently using
-        Time.timeScale = startSpeed; //speed tied to start button is all that is ever seen by sim
-        InvokeRepeating("getTimeStep", 0, 0.1f);
+        //Invoke("checkSpeed", 0); //check to see if we are paused
+        Invoke("displaySpeed", 0); //display the speed we are currently using
+        //Time.timeScale = startSpeed; //speed tied to start button is all that is ever seen by sim
+        Invoke("getTimeStep", 0);
     }
 
     void ChangeSpeed(float timeStep)
     {
-        currentSpeed = timeStep; //buttons change the current speed
+        currentSpeed = 1.0f / timeStep; //buttons change the current speed
     }
 
     void Pause()
     {
-        startSpeed = 0; //pause button forces 0 as current speed
+        InvokeUtil.isPaused = true; //pause button forces 0 as current speed
     }
 
     void displaySpeed()
@@ -105,7 +103,7 @@ public class mainButtonControl : MonoBehaviour
 
     void StartSim()
     {
-        if(startSpeed == 0 && currentSpeed == 0) //if we have never started the simulation and no speed is selected
+        /*if(startSpeed == 0 && currentSpeed == 0) //if we have never started the simulation and no speed is selected
         {
             currentSpeed = 1; //if start is clicked we update the play speed to start at 1
             startSpeed = currentSpeed; //start the simulation
@@ -113,7 +111,8 @@ public class mainButtonControl : MonoBehaviour
         else
         {
             startSpeed = currentSpeed; //otherwise spamming start does nothing
-        }
+        }*/
+        InvokeUtil.isPaused = false;
     }
 
     public void restartScene()

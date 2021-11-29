@@ -11,13 +11,19 @@ public class patrol : MonoBehaviour
     private Vector3 origPos;
     private float speed = 10000000;
     public cargo rescue;
+    private bool waitMove = false;
+    private bool waitDefeat = false;
 
-    // Start is called before the first frame update
-    void Start()
+    void Update()
     {
-        InvokeRepeating("move", 1.0f, 1.0f);
-        InvokeRepeating("defeatPirate", 1.01f, 1.01f);
-
+        if (!waitMove && !InvokeUtil.isPaused) {
+            waitMove = true;
+            InvokeUtil.Invoke(this, () => move(), mainButtonControl.currentSpeed);
+        }
+        if (!waitDefeat && !InvokeUtil.isPaused) {
+            waitDefeat = true;
+            InvokeUtil.Invoke(this, () => defeatPirate(), mainButtonControl.currentSpeed);
+        }
     }
 
     private void move()
@@ -31,6 +37,7 @@ public class patrol : MonoBehaviour
             Destroy(this.gameObject);
             shipScript.patrolsExit++;
         }
+        waitMove = false;
     }
 
     private void defeatPirate()
@@ -58,6 +65,7 @@ public class patrol : MonoBehaviour
                 }
             }
         }
+        waitDefeat = false;
     }
 
     private void OnDrawGizmos()

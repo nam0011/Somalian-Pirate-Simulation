@@ -10,14 +10,27 @@ public class cargo : MonoBehaviour {
     private List<int> piratesEvaded = new List<int>(); // a Cargo may only evade each Pirate once
     public bool isCaptured = false;
     public GameObject capPirate;
+    private bool waitMove = false;
+    private bool waitEvade = false;
+    private bool waitCapture = false;
 
     private Vector3 origPos;
     private float speed = 10000000;
-    // Start is called before the first frame update
-    void Start() {
-        InvokeRepeating("move", 1.0f, 1.0f);
-        InvokeRepeating("evadeAction", 1.01f, 1.01f);
-        InvokeRepeating("captureAction", 1.01f, 1.01f);
+
+    void Update() {
+
+        if (!waitMove && !InvokeUtil.isPaused) {
+            waitMove = true;
+            InvokeUtil.Invoke(this, () => move(), mainButtonControl.currentSpeed);
+        }
+        if (!waitEvade && !InvokeUtil.isPaused) {
+            waitEvade = true;
+            InvokeUtil.Invoke(this, () => evadeAction(), mainButtonControl.currentSpeed);
+        }
+        if (!waitCapture && !InvokeUtil.isPaused) {
+            waitCapture = true;
+            InvokeUtil.Invoke(this, () => captureAction(), mainButtonControl.currentSpeed);
+        }
     }
 
     private void move() {
@@ -37,6 +50,7 @@ public class cargo : MonoBehaviour {
             Destroy(this.gameObject);
             shipScript.cargosExit++;
         }
+        waitMove = false;
     }
 
     /* this method should be called each timestep. It shall check if any
@@ -65,6 +79,7 @@ public class cargo : MonoBehaviour {
                 }
             }
         }
+        waitEvade = false;
     }
 
     /* this method should be called each timestep. It shall check if any
@@ -102,6 +117,7 @@ public class cargo : MonoBehaviour {
                 }
             }
         }
+        waitCapture = false;
     }
 
     private void OnDrawGizmos()

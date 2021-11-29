@@ -59,6 +59,9 @@ public class shipScript : MonoBehaviour
     private int patrolSpawnProbability = 25;
     private int pirateSpawnProbability = 40;
 
+    private bool waitCounter = false;
+    private bool waitSpawn = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -119,14 +122,20 @@ public class shipScript : MonoBehaviour
         cargoSpawnProbLabel.text = "Cargo Spawn %: " + cargoSpawnProbability.ToString();
         patrolSpawnProbLabel.text = "Patrol Spawn %: " + patrolSpawnProbability.ToString();
         pirateSpawnProbLabel.text = "Pirate Spawn %: " + pirateSpawnProbability.ToString();
-
-        InvokeRepeating("updateCounters", 0.0f, 1.0f);
-        InvokeRepeating("updateSpawnPerc", 0.0f, 0.1f);
-        InvokeRepeating("spawnShip", 0.0f, 1.0f);
     }
 
     void Update()
     {
+
+        if (!waitCounter && !InvokeUtil.isPaused) {
+            waitCounter = true;
+            InvokeUtil.Invoke(this, () => updateCounters(), mainButtonControl.currentSpeed);
+        }
+        if (!waitSpawn && !InvokeUtil.isPaused) {
+            waitSpawn = true;
+            InvokeUtil.Invoke(this, () => spawnShip(), mainButtonControl.currentSpeed);
+        }
+
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             cargoSpawnProbability = 50; //default -- spawn half of the time
@@ -186,6 +195,8 @@ public class shipScript : MonoBehaviour
         pirateDefeatedCounterLabel.text = "Pirates Defeated: " + piratesDefeat.ToString();
 
         timeStepCounterLabel.text = "Time Step: " + timeStepCounter++.ToString();
+
+        waitCounter = false;
     }
 
     private void updateSpawnPerc()
@@ -224,6 +235,8 @@ public class shipScript : MonoBehaviour
             // update patrol entered counts
             patrolsEnter++;
         }
+
+        waitSpawn = false;
     }
 
     public int getTimeStep()

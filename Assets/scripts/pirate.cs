@@ -10,11 +10,16 @@ public class pirate : MonoBehaviour
     public cargo captureInstance;
     private Vector3 origPos;
     private float speed = 10000000;
+    private bool wait = false;
 
-    // Start is called before the first frame update
-    void Start()
+    // Update is called once per frame
+    void Update()
     {
-        InvokeRepeating("move", 1.0f, 1.0f);
+        if(!wait && !InvokeUtil.isPaused) {
+            wait = true;
+            InvokeUtil.Invoke(this, () => move(), mainButtonControl.currentSpeed);
+            Debug.Log(Time.time);
+        }
     }
 
     private void move()
@@ -29,6 +34,8 @@ public class pirate : MonoBehaviour
             Destroy(this.gameObject);
             shipScript.piratesExit++;
         }
+
+        wait = false;
     }
 
     private void OnDrawGizmos()

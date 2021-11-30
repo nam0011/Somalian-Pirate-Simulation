@@ -57,6 +57,7 @@ public class patrol : MonoBehaviour
                         Console.WriteLine("PIRATE SENSED!!!!!!!");
                         if (p.transform.GetComponent<pirate>().hasCapture == true) {
                             p.transform.GetComponent<pirate>().captureInstance.setCargo();
+                            p.transform.GetComponent<pirate>().captureInstance.isCaptured = false;
                         }
                         Destroy(p);
                         shipScript.piratesDefeat += 1;

@@ -18,7 +18,6 @@ public class pirate : MonoBehaviour
         if(!wait && !InvokeUtil.isPaused) {
             wait = true;
             InvokeUtil.Invoke(this, () => move(), mainButtonControl.currentSpeed);
-            Debug.Log(Time.time);
         }
     }
 
@@ -29,7 +28,7 @@ public class pirate : MonoBehaviour
 
         //boundaries need to be edited
         // if we moved passed map boundary, remove ship from simulation
-        if (transform.position.y >= 585.0f)
+        if (transform.position.y >= 585.0f || transform.position.y <= -50.0f)
         {
             Destroy(this.gameObject);
             shipScript.piratesExit++;

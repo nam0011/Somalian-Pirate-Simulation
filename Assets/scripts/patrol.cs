@@ -22,7 +22,7 @@ public class patrol : MonoBehaviour
         }
         if (!waitDefeat && !InvokeUtil.isPaused) {
             waitDefeat = true;
-            InvokeUtil.Invoke(this, () => defeatPirate(), mainButtonControl.currentSpeed);
+            InvokeUtil.Invoke(this, () => defeatPirate(), mainButtonControl.currentSpeed + 0.01f);
         }
     }
 
@@ -52,11 +52,10 @@ public class patrol : MonoBehaviour
                 foreach (GameObject p in pirates)
                 {
                     // check if Pirate is at the sensor
-                    if (Vector2.Distance(sensor.position, p.transform.position) <= 6.8f) {
+                    if (Vector2.Distance(sensor.position, p.transform.position) <= 5.5f) {
                         //CHECKING IF THE PIRATE HAS A CAPTURE AND SETTING MOVE POINT & ROTATION BACK
                         Console.WriteLine("PIRATE SENSED!!!!!!!");
                         if (p.transform.GetComponent<pirate>().hasCapture == true) {
-                            Debug.Log("ATTEMPTING TO RESCUE");
                             p.transform.GetComponent<pirate>().captureInstance.setCargo();
                         }
                         Destroy(p);

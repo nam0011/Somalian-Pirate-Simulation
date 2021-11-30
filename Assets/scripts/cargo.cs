@@ -25,11 +25,11 @@ public class cargo : MonoBehaviour {
         }
         if (!waitEvade && !InvokeUtil.isPaused) {
             waitEvade = true;
-            InvokeUtil.Invoke(this, () => evadeAction(), mainButtonControl.currentSpeed);
+            InvokeUtil.Invoke(this, () => evadeAction(), mainButtonControl.currentSpeed + 0.01f);
         }
         if (!waitCapture && !InvokeUtil.isPaused) {
             waitCapture = true;
-            InvokeUtil.Invoke(this, () => captureAction(), mainButtonControl.currentSpeed);
+            InvokeUtil.Invoke(this, () => captureAction(), mainButtonControl.currentSpeed + 0.01f);
         }
     }
 
@@ -39,14 +39,7 @@ public class cargo : MonoBehaviour {
         transform.position = Vector3.MoveTowards(transform.position, movePoint.position, step);
 
         // if we moved passed map boundary, remove ship from simulation
-        if(isCaptured) {
-            if (transform.position.y >= 585.0f) {
-                Destroy(this.gameObject);
-                Destroy(capPirate);
-                shipScript.piratesExit++;
-            }
-        }
-        else if (transform.position.x >= 2630.0f) {
+        if (transform.position.x >= 2630.0f || transform.position.y <= -50.0f) {
             Destroy(this.gameObject);
             shipScript.cargosExit++;
         }
@@ -67,11 +60,13 @@ public class cargo : MonoBehaviour {
                     // loop over Pirates
                     foreach (GameObject p in pirates) {
                         // check if Pirate is at the sensor
-                        if (Vector2.Distance(sensor.position, p.transform.position) <= 6.8
+                        if (Vector2.Distance(sensor.position, p.transform.position) <= 5.5f
                             && !piratesEvaded.Contains(p.GetInstanceID())
                             && !p.transform.GetComponent<pirate>().hasCapture) {
                             // then Cargo should evade
+                            Debug.Log("Before: " + transform.position.y.ToString());
                             transform.position = Vector3.MoveTowards(transform.position, evadeTarget.position, speed * Time.deltaTime);
+                            Debug.Log("After: " + transform.position.y.ToString());
                             shipScript.evadesNotCaptured += 1; // needs to be decremented if captured
                             piratesEvaded.Add(p.GetInstanceID());
                         }
@@ -96,16 +91,19 @@ public class cargo : MonoBehaviour {
                     // loop over Pirates
                     foreach (GameObject p in pirates) {
                         // check if Pirate is at the sensor
-                        if (Vector2.Distance(sensor.position, p.transform.position) <= 6.8f && !p.transform.GetComponent<pirate>().hasCapture) {
+                        if (Vector2.Distance(sensor.position, p.transform.position) <= 5.5f && !p.transform.GetComponent<pirate>().hasCapture) {
                             // then Cargo becomes a Capture; change color & direction of Cargo,
                             // move Pirate to Cargo's grid, and change direction of Pirate
 
+                            // set Pirate move point and move to Capture's grid
+                            Vector3 pirateMovePointPos = p.transform.GetComponent<pirate>().movePoint.localPosition;
+                            p.transform.GetComponent<pirate>().movePoint.localPosition = new Vector3(pirateMovePointPos.x, pirateMovePointPos.y - 2.436f, pirateMovePointPos.z);
+                            p.transform.position = transform.position;
+                            Debug.Log("Capture Cargo: " + transform.position);
+                            Debug.Log("Capture Pirate: " + transform.position);
+
                             // set direction of movement
                             setCapture();
-
-                            // set Pirate rotation and move to Capture's grid
-                            p.transform.Rotate(0.0f, 0.0f, 180.0f, Space.Self);
-                            p.transform.position = this.transform.position;
 
                             shipScript.cargosCapture += 1; // needs to be decremented if captured
                             isCaptured = true;
@@ -133,14 +131,12 @@ public class cargo : MonoBehaviour {
     }
 
     public void setCapture() {
-        transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
-        movePoint.localPosition = new Vector3(movePoint.localPosition.x - 0.118f, movePoint.localPosition.y, movePoint.localPosition.z);
+        movePoint.localPosition = new Vector3(movePoint.localPosition.x - 1.336f, movePoint.localPosition.y - 1.218f, movePoint.localPosition.z);
         this.gameObject.GetComponentInChildren<SpriteRenderer>().color = Color.yellow;
     }
 
     public void setCargo() {
-        transform.Rotate(0.0f, 0.0f, 270.0f, Space.Self);
-        movePoint.localPosition = new Vector3(movePoint.localPosition.x + 0.118f, movePoint.localPosition.y, movePoint.localPosition.z);
+        movePoint.localPosition = new Vector3(movePoint.localPosition.x + 1.336f, movePoint.localPosition.y + 1.218f, movePoint.localPosition.z);
         this.gameObject.GetComponentInChildren<SpriteRenderer>().color = Color.blue;
     }
 }

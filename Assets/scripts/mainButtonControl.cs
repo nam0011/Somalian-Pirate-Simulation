@@ -67,8 +67,6 @@ public class mainButtonControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Invoke("checkSpeed", 0); //check to see if we are paused
-        Invoke("displaySpeed", 0); //display the speed we are currently using
         //Time.timeScale = startSpeed; //speed tied to start button is all that is ever seen by sim
         Invoke("getTimeStep", 0);
     }
@@ -125,17 +123,16 @@ public class mainButtonControl : MonoBehaviour
 
     public void singleStepSim()
     {
-        if (startSpeed == 0) //if we are paused
+        if (InvokeUtil.isPaused) //if we are paused
         {
-            testTimeStep = currentTimeStep - 1; //save the step we are on
-            while (testTimeStep <= currentTimeStep) //while we are equal to that step let us increment by 1
-            {
-                startSpeed = 1; //run the sim
-                testTimeStep++; //increment the time step
-                Wait1Second(); //wait for one second
-            }
+            InvokeUtil.isPaused = false;
+            InvokeUtil.Invoke(this, () => singleStepPause(), 1.0f);
             timeCounter.incrementTimeStep(); //increment the step counter to display the incremented step
         }
+    }
+
+    void singleStepPause() {
+        InvokeUtil.isPaused = true;
     }
 
     IEnumerator Wait1Second()

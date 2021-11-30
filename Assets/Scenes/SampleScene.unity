@@ -22648,7 +22648,6 @@ MonoBehaviour:
   pause: {fileID: 421421583}
   restart: {fileID: 1539878108}
   singleStep: {fileID: 808987243}
-  currentSpeed: 0
   startSpeed: 0
   shipSpawn: {fileID: 941874135}
   currentTimeStep: 0
@@ -26716,7 +26715,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1472788710}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2630.31, y: 170.5557, z: -45.59887}
+  m_LocalPosition: {x: 2630.31, y: -35, z: -45.59887}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

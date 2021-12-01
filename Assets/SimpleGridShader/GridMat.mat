@@ -64,7 +64,7 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 1
     - _GridSize: 20
-    - _LineSize: 0.015
+    - _LineSize: 0.15
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1

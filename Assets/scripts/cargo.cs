@@ -5,6 +5,7 @@ using UnityEngine;
 public class cargo : MonoBehaviour {
 
     public Transform movePoint;
+    public Transform captureMovePoint;
     public Transform evadeTarget;
     public List<Transform> interactionPoints;
     private List<int> piratesEvaded = new List<int>(); // a Cargo may only evade each Pirate once
@@ -36,7 +37,12 @@ public class cargo : MonoBehaviour {
     private void move() {
         // move 1 grid
         float step = speed * Time.deltaTime;
-        transform.position = Vector3.MoveTowards(transform.position, movePoint.position, step);
+        if (isCaptured) {
+            transform.position = Vector3.MoveTowards(transform.position, captureMovePoint.position, step);
+        } else {
+            transform.position = Vector3.MoveTowards(transform.position, movePoint.position, step);
+        }
+        
 
         // if we moved passed map boundary, remove ship from simulation
         if (transform.position.x >= 2630.0f || transform.position.y <= -50.0f) {
@@ -106,7 +112,6 @@ public class cargo : MonoBehaviour {
                             setCapture();
 
                             shipScript.cargosCapture += 1; // needs to be decremented if captured
-                            isCaptured = true;
                             capPirate = p;
                             p.transform.GetComponent<pirate>().hasCapture = true;
                             p.transform.GetComponent<pirate>().captureInstance = this;
@@ -131,12 +136,12 @@ public class cargo : MonoBehaviour {
     }
 
     public void setCapture() {
-        movePoint.localPosition = new Vector3(movePoint.localPosition.x - 1.336f, movePoint.localPosition.y - 1.218f, movePoint.localPosition.z);
-        this.gameObject.GetComponentInChildren<SpriteRenderer>().color = Color.yellow;
+        isCaptured = true;
+        gameObject.GetComponentInChildren<SpriteRenderer>().color = Color.yellow;
     }
 
     public void setCargo() {
-        movePoint.localPosition = new Vector3(movePoint.localPosition.x + 1.336f, movePoint.localPosition.y + 1.218f, movePoint.localPosition.z);
-        this.gameObject.GetComponentInChildren<SpriteRenderer>().color = Color.blue;
+        isCaptured = false;
+        gameObject.GetComponentInChildren<SpriteRenderer>().color = Color.blue;
     }
 }

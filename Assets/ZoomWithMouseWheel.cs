@@ -8,7 +8,7 @@ public class ZoomWithMouseWheel : MonoBehaviour
     private float ScrollSpeed = 10;
     private Camera ZoomCamera;
 
-    public float maxZoom = 5;
+    public float maxZoom = 1;
     public float minZoom = 35;
     public float sensitivity = 1;
     public float speed = 10;
@@ -26,7 +26,9 @@ public class ZoomWithMouseWheel : MonoBehaviour
     void UpdateCameraLocation()
     {
         targetZoom -= Input.mouseScrollDelta.y * sensitivity;
-        targetZoom = Mathf.Clamp(targetZoom, maxZoom, minZoom);
+        if (targetZoom > 275.0f) {
+            targetZoom = 275.0f;
+        }
         newSize = Mathf.MoveTowards(ZoomCamera.orthographicSize, targetZoom, speed * Time.deltaTime);
         ZoomCamera.orthographicSize = newSize;
     }

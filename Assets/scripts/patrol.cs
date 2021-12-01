@@ -54,10 +54,8 @@ public class patrol : MonoBehaviour
                     // check if Pirate is at the sensor
                     if (Vector2.Distance(sensor.position, p.transform.position) <= 5.5f) {
                         //CHECKING IF THE PIRATE HAS A CAPTURE AND SETTING MOVE POINT & ROTATION BACK
-                        Console.WriteLine("PIRATE SENSED!!!!!!!");
                         if (p.transform.GetComponent<pirate>().hasCapture == true) {
                             p.transform.GetComponent<pirate>().captureInstance.setCargo();
-                            p.transform.GetComponent<pirate>().captureInstance.isCaptured = false;
                         }
                         Destroy(p);
                         shipScript.piratesDefeat += 1;

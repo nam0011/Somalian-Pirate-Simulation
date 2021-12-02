@@ -42,10 +42,9 @@ public class cargo : MonoBehaviour {
         } else {
             transform.position = Vector3.MoveTowards(transform.position, movePoint.position, step);
         }
-        
 
         // if we moved passed map boundary, remove ship from simulation
-        if (transform.position.x >= 2630.0f || transform.position.y <= -50.0f) {
+        if (transform.position.x >= 2630.0f || transform.position.y <= -25.0f) {
             Destroy(this.gameObject);
             shipScript.cargosExit++;
         }
@@ -111,7 +110,12 @@ public class cargo : MonoBehaviour {
                             // set direction of movement
                             setCapture();
 
-                            shipScript.cargosCapture += 1; // needs to be decremented if captured
+                            // increment capture counter for cargo and evade if necessary
+                            shipScript.cargosCapture += 1; // needs to be decremented if rescued
+                            if(hasEvaded()) {
+                                shipScript.evadesNotCaptured -= 1;
+                                shipScript.evadesCaptured += 1;
+                            }
                             capPirate = p;
                             p.transform.GetComponent<pirate>().hasCapture = true;
                             p.transform.GetComponent<pirate>().captureInstance = this;
@@ -143,5 +147,13 @@ public class cargo : MonoBehaviour {
     public void setCargo() {
         isCaptured = false;
         gameObject.GetComponentInChildren<SpriteRenderer>().color = Color.blue;
+    }
+
+    public bool hasEvaded() {
+        if (piratesEvaded.Count > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

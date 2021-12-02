@@ -56,7 +56,17 @@ public class patrol : MonoBehaviour
                         //CHECKING IF THE PIRATE HAS A CAPTURE AND SETTING MOVE POINT & ROTATION BACK
                         if (p.transform.GetComponent<pirate>().hasCapture == true) {
                             p.transform.GetComponent<pirate>().captureInstance.setCargo();
+
+                            // increment rescue counter
+                            shipScript.cargosRescue += 1;
+
+                            // if the cargo had previously evaded, increment/decrement counters
+                            if(p.transform.GetComponent<pirate>().captureInstance.hasEvaded()) {
+                                shipScript.evadesCaptured -= 1;
+                                shipScript.evadesNotCaptured += 1;
+                            }
                         }
+                        // remove pirate from simulation and increment pirate defeat counter
                         Destroy(p);
                         shipScript.piratesDefeat += 1;
                     }

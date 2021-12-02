@@ -28,7 +28,7 @@ public class pirate : MonoBehaviour
 
         //boundaries need to be edited
         // if we moved passed map boundary, remove ship from simulation
-        if (transform.position.y >= 585.0f || transform.position.y <= -50.0f)
+        if (transform.position.y >= 585.0f || transform.position.y <= -25.0f)
         {
             Destroy(this.gameObject);
             shipScript.piratesExit++;

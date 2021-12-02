@@ -41,6 +41,7 @@ public class shipScript : MonoBehaviour
     Text patrolExitedCounterLabel;
 
     Text cargoCapturedCounterLabel;
+    Text captureRescuedCounterLabel;
     Text pirateEnteredCounterLabel;
     Text patrolEnteredCounterLabel;
 
@@ -87,6 +88,7 @@ public class shipScript : MonoBehaviour
         patrolExitedCounterLabel = GameObject.Find("PatrolCounter_Exited").GetComponent<Text>();
 
         cargoCapturedCounterLabel = GameObject.Find("CargoCounter_Captured").GetComponent<Text>();
+        captureRescuedCounterLabel = GameObject.Find("CargoCounter_CapturedRescued").GetComponent<Text>();
         pirateEnteredCounterLabel = GameObject.Find("PirateCounter_Entered").GetComponent<Text>();
         patrolEnteredCounterLabel = GameObject.Find("PatrolCounter_Entered").GetComponent<Text>();
 
@@ -109,6 +111,7 @@ public class shipScript : MonoBehaviour
         patrolExitedCounterLabel.text = "Patrols Exited: " + patrolsExit.ToString();
 
         cargoCapturedCounterLabel.text = "Cargos Captured: " + cargosEnter.ToString();
+        captureRescuedCounterLabel.text = "Captures Rescued: " + cargosRescue.ToString();
         pirateEnteredCounterLabel.text = "Pirates Entered: " + piratesEnter.ToString();
         patrolEnteredCounterLabel.text = "Patrols Entered: " + patrolsEnter.ToString();
 
@@ -185,6 +188,7 @@ public class shipScript : MonoBehaviour
         cargoCounterLabel.text = "Cargos Entered: " + GameObject.FindGameObjectsWithTag("cargo").Length.ToString();
         cargoCapturedCounterLabel.text = "Cargos Captured: " + cargosCapture.ToString();
         cargoExitedCounterLabel.text = "Cargos Exited: " + cargosExit.ToString();
+        captureRescuedCounterLabel.text = "Captures Rescued: " + cargosRescue.ToString();
 
         pirateEnteredCounterLabel.text = "Pirates Entered: " + piratesEnter.ToString();
         pirateExitedCounterLabel.text = "Pirates Exited: " + piratesExit.ToString();

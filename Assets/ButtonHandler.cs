@@ -14,10 +14,8 @@ public class ButtonHandler : MonoBehaviour
         timeStepSpeed = speed;
     }
 
-    public void restartScene()
+    public void endSimulation()
     {
-        var currentSceneName = SceneManager.GetActiveScene().name;
-        SceneManager.LoadSceneAsync(currentSceneName);
-        Time.timeScale = 0;
+        Application.Quit();
     }
 }

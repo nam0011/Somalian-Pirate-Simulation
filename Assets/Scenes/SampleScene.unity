@@ -8399,7 +8399,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Reset
+  m_Text: End
 --- !u!222 &481066538
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -28012,7 +28012,7 @@ GameObject:
   - component: {fileID: 1539878108}
   - component: {fileID: 1539878111}
   m_Layer: 5
-  m_Name: Restart
+  m_Name: End
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28084,7 +28084,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1539878111}
         m_TargetAssemblyTypeName: ButtonHandler, Assembly-CSharp
-        m_MethodName: restartScene
+        m_MethodName: endSimulation
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -28107,7 +28107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.8018868, g: 0.18534178, b: 0.18534178, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

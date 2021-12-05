@@ -17,6 +17,7 @@ public class cargo : MonoBehaviour {
 
     private Vector3 origPos;
     private float speed = 10000000;
+    private Color captureColor = new Color(0.8f, 0.8f, 0.0f, 1.0f);
 
     void Update() {
 
@@ -141,7 +142,7 @@ public class cargo : MonoBehaviour {
 
     public void setCapture() {
         isCaptured = true;
-        gameObject.GetComponentInChildren<SpriteRenderer>().color = Color.yellow;
+        gameObject.GetComponentInChildren<SpriteRenderer>().color = captureColor;
     }
 
     public void setCargo() {
